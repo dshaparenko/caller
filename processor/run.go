@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"reflect"
 
-	tools "github.com/devopsext/sre/tools"
+	tools "github.com/devopsext/tools"
 )
 
 type FunctionCallRequest struct {
