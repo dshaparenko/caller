@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"reflect"
 
-	tools "github.com/devopsext/tools"
+	"github.com/devopsext/tools/render"
 )
 
 type FunctionCallRequest struct {
@@ -57,7 +57,7 @@ func (p *RunProcessor) HandleHttpRequest(w http.ResponseWriter, r *http.Request)
 
 func (p *RunProcessor) callFunction(funcName string, params map[string]interface{}) (interface{}, error) {
 	// Get the function from the tool library
-	f := reflect.ValueOf(tools.GetFunction(funcName))
+	f := reflect.ValueOf(render.Template(SSHRun)).MethodByName(funcName)
 	if !f.IsValid() {
 		return nil, fmt.Errorf("function %s not found", funcName)
 	}
